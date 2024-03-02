@@ -10,10 +10,19 @@ print("""▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀�
 ▐▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▌""")
 print ("\nWelcome to your To do list app!")
 print ("This app helps you to add, delete, view and modify your things to do on daily life \n")
+print ()
 
 
+task = ""
+#while True:
+    print("\nOptions:")
+    print("1. Add Task")
+    print("2. Modify Task")
+    print("3. View Tasks")
+    print("4. Delete Task")
+    print("5. Exit")
+    choice = input("Enter your choice: ")
 
-#task = ""
-#def add_task():
+def add_task():
 
 
