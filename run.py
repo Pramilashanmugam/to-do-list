@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 print("""\n▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▌
 ▐  ███████████                 █████             ████   ███           █████    ▌
 ▐ ░█░░░███░░░█                ░░███             ░░███  ░░░           ░░███     ▌
@@ -39,8 +40,10 @@ def add_task():
     """
     A function is to add task by the user with the date for completion, I have used a loop to ensure the user enters the valid date in the format of DD/MM/YYYY
     """
+    file = open('task.txt')
+    print(type(file))
     # Asking user to enter the task
-    task = input("Please add enter your task:")
+    task_input = input("Please add enter your task:")
     # Checking for valid date and loops until valid date is received
     while True:
         date = input("Please enter the date for completion(dd/mm/yyyy):")
@@ -51,7 +54,6 @@ def add_task():
         else:
             print("Invalid date format. Please enter date in dd/mm/yyyy format.")
 
-   
 add_task()
 
 
