@@ -9,14 +9,17 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
+# Authenticate with Google account
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('todolist')
 
-task = SHEET.worksheet('tasks')
-data = task.get_all_values()
-pprint(data)
+# Open the spreadsheet
+SHEET = GSPREAD_CLIENT.open('todolist')
+    
+# Select the tasks worksheet
+task_sheet = SHEET.worksheet('tasks')
+
 
 print("""\n▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▌
 ▐  ███████████                 █████             ████   ███           █████    ▌
@@ -74,8 +77,22 @@ def add_task():
     A function is to add task by the user with the date for completion,
     I have used a loop to ensure the user enters the valid date in the format of DD/MM/YYYY
     """
-    # Asking user to enter the task
-    task_input = input("Please add enter your task: ")
+
+    # Get the number of rows in the worksheet
+    index_length = task_sheet.get_all_values()
+    num_rows = 0
+    for row in index_length:
+        num_rows +=1
+
+    # Asking user to enter the task. Validating for text length and ensure its not empty.
+    while True:
+        task_input = input("Please add enter your task(max 100 Characters): ")
+        if not task_input:
+            print("Task cannot be empty. Please enter a task")
+        elif len(task_input)>100:
+            print("Task cannot exceed 100 Characters. Please enter a shorter Task.")
+        else:
+            break
     # Checking for valid date and loops until valid date is received
     while True:
         date = input("Please enter the date for completion(dd/mm/yyyy):")
@@ -86,5 +103,7 @@ def add_task():
         else:
             print("Invalid date format. Please enter date in dd/mm/yyyy format.")
 
+    # Append a new row with the task details
+    task_sheet.append_row([num_rows,task_input, date])
 
 add_task()
