@@ -1,5 +1,22 @@
+import gspread
+from google.oauth2.service_account import Credentials
 from datetime import datetime
+from pprint import pprint
 
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('todolist')
+
+task = SHEET.worksheet('tasks')
+data = task.get_all_values()
+pprint(data)
 
 print("""\n▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▌
 ▐  ███████████                 █████             ████   ███           █████    ▌
@@ -58,7 +75,7 @@ def add_task():
     I have used a loop to ensure the user enters the valid date in the format of DD/MM/YYYY
     """
     # Asking user to enter the task
-    task_input = input("Please add enter your task:")
+    task_input = input("Please add enter your task: ")
     # Checking for valid date and loops until valid date is received
     while True:
         date = input("Please enter the date for completion(dd/mm/yyyy):")
