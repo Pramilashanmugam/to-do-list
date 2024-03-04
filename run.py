@@ -106,4 +106,15 @@ def add_task():
     # Append a new row with the task details
     task_sheet.append_row([num_rows,task_input, date])
 
+
+
+def list_tasks():
+    """
+    list done the tasks in the spreadsheet
+    """
+    tasks = SHEET.worksheet('tasks').get_all_values()
+    pprint(tasks)
+
 add_task()
+
+list_tasks()
