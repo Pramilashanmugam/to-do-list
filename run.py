@@ -1,7 +1,10 @@
-import gspread
-from google.oauth2.service_account import Credentials
+"""
+importing essential libraries for this project
+"""
 from datetime import datetime
 from pprint import pprint
+import gspread
+from google.oauth2.service_account import Credentials
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -16,7 +19,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 
 # Open the spreadsheet
 SHEET = GSPREAD_CLIENT.open('todolist')
-    
 # Select the tasks worksheet
 task_sheet = SHEET.worksheet('tasks')
 
@@ -78,8 +80,12 @@ def add_task():
     I have used a loop to ensure the user enters the valid date in the format of DD/MM/YYYY
     """
 
+    # Get the current date
+    current_date = datetime.now().date()
+
     # Get the number of rows in the worksheet
     index_length = task_sheet.get_all_values()
+    # Loop to add the index number for everytask
     num_rows = 0
     for row in index_length:
         num_rows +=1
@@ -96,12 +102,18 @@ def add_task():
     # Checking for valid date and loops until valid date is received
     while True:
         date = input("Please enter the date for completion(dd/mm/yyyy):")
-        # Validate date
-        if validate_date(date):
-            print("")
-            break
-        else:
+        # Validate date format
+        if not validate_date(date):
             print("Invalid date format. Please enter date in dd/mm/yyyy format.")
+            continue
+        # Convert the input date string to a datetime object
+        deadline = datetime.strptime(date, '%d/%m/%Y').date()
+
+        # Check if the deadline date is in the past
+        if deadline < current_date:
+            print("Deadline date for completion cannot be in the past. Please enter a future date.")
+        else:
+            break
 
     # Append a new row with the task details
     task_sheet.append_row([num_rows,task_input, date])
