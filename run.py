@@ -2,7 +2,6 @@
 importing essential libraries for this project
 """
 from datetime import datetime
-from pprint import pprint
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -37,31 +36,31 @@ print("\nWelcome to your To do list app!")
 print("This app helps you to keep track of your day to day activities.\n")
 print("You can add, delete, view or modify your tasks in this app\n")
 
-
-"""tasks = []
-while True:
-    print("\nPlease choose an option:")
-    print("1. Add Task")
-    print("2. Modify Task")
-    print("3. View Tasks")
-    print("4. Delete Task")
-    print("5. Exit")
-    choice = input("Enter your choice: ")
-    
-    if choice==1:
-        add_task()
-    elif choice==2:
-    
-    elif choice==3:
-
-    elif choice==4:
-
-    elif choice==5:
-    
-    else:
-        print("Please enter the valid number")
-        """
-
+def main():
+    """
+    This function has the options to be chosen by the user.
+    Depending on the input received, the program will call the respective function.
+    """
+    while True:
+        print("\nPlease choose an option:")
+        print("1. Add Task")
+        print("2. Modify Task")
+        print("3. View Tasks")
+        print("4. Delete Task")
+        print("5. Exit")
+        choice = input("Enter your choice: ")
+        if choice==1:
+            add_task()
+        elif choice==2:
+            print("currently under process")
+        elif choice==3:
+            list_tasks()
+        elif choice==4:
+            delete_task()
+        elif choice==5:
+            break
+        else:
+            print("Please enter the valid number")
 
 def validate_date(date_str):
     """ 
@@ -72,7 +71,6 @@ def validate_date(date_str):
         return True
     except ValueError:
         return False
-
 
 def add_task():
     """
@@ -85,10 +83,6 @@ def add_task():
 
     # Get the number of rows in the worksheet
     tasks = task_sheet.get_all_values()
-    # Loop to add the index number for everytask
-    num_rows = 0
-    for row in tasks:
-        num_rows +=1
 
     # Asking user to enter the task. Validating for text length and ensure its not empty.
     while True:
@@ -117,17 +111,20 @@ def add_task():
 
     # Append a new row with the task details
     tasks = task_sheet.get_all_values()
-    task_sheet.append_row([num_rows,task_input, date])
+    task_sheet.append_row([task_input, date])
     print(f"A new task '{tasks[-1]}' had been added to the list")
-
-
 
 def list_tasks():
     """
     list done the tasks in the spreadsheet
     """
     tasks = task_sheet.get_all_values()
-    pprint(tasks)
+    if not tasks:
+        print("There is no tasks currently")
+    else:
+        print("Current tasks:")
+        for index, task in enumerate(tasks, start=1):
+            print(f"{index}:{task[0]}(Deadline: {task[1]})")
 
 def delete_task():
     """
@@ -138,18 +135,13 @@ def delete_task():
     list_tasks()
     try:
         task_to_delete =int(input("Enter the index no to delete the task: "))
-        if task_to_delete>=2 and task_to_delete < len(tasks):
+        if task_to_delete>=1 and task_to_delete <= len(tasks):
             # Delete the corresponding row from the worksheet
             task_sheet.delete_rows(task_to_delete)
             print(f"Task '{task_to_delete}' has been deleted")
-            print(tasks)
         else:
             print(f"Task '{task_to_delete}' not found")
     except ValueError:
-        print("Invalid input")
+        print("Invalid input. Please enter a valid index.")
 
-add_task()
-
-list_tasks()
-
-delete_task()
+main()
