@@ -84,10 +84,10 @@ def add_task():
     current_date = datetime.now().date()
 
     # Get the number of rows in the worksheet
-    index_length = task_sheet.get_all_values()
+    tasks = task_sheet.get_all_values()
     # Loop to add the index number for everytask
     num_rows = 0
-    for row in index_length:
+    for row in tasks:
         num_rows +=1
 
     # Asking user to enter the task. Validating for text length and ensure its not empty.
@@ -116,7 +116,9 @@ def add_task():
             break
 
     # Append a new row with the task details
+    tasks = task_sheet.get_all_values()
     task_sheet.append_row([num_rows,task_input, date])
+    print(f"A new task '{tasks[-1]}' had been added to the list")
 
 
 
@@ -124,9 +126,30 @@ def list_tasks():
     """
     list done the tasks in the spreadsheet
     """
-    tasks = SHEET.worksheet('tasks').get_all_values()
+    tasks = task_sheet.get_all_values()
     pprint(tasks)
+
+def delete_task():
+    """
+    A function to delete a task
+    """
+    # Fetch tasks from the worksheet
+    tasks = task_sheet.get_all_values()
+    list_tasks()
+    try:
+        task_to_delete =int(input("Enter the index no to delete the task: "))
+        if task_to_delete>=2 and task_to_delete < len(tasks):
+            # Delete the corresponding row from the worksheet
+            task_sheet.delete_rows(task_to_delete)
+            print(f"Task '{task_to_delete}' has been deleted")
+            print(tasks)
+        else:
+            print(f"Task '{task_to_delete}' not found")
+    except ValueError:
+        print("Invalid input")
 
 add_task()
 
 list_tasks()
+
+delete_task()
