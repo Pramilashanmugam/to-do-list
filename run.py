@@ -36,6 +36,7 @@ print("\nWelcome to your To do list app!")
 print("This app helps you to keep track of your day to day activities.\n")
 print("You can add, delete, view or modify your tasks in this app\n")
 
+
 def validate_date(date_str):
     """ 
     This function is to validate the date format entered by user is valid or not
@@ -105,6 +106,18 @@ def list_tasks():
             print(f"{index}:    {task[0]}            (Deadline: {task[1]})")
 
 
+def modify_task():
+    """
+    a function to modify an existing task
+    """
+    # Fetch tasks from the worksheet
+    tasks = task_sheet.get_all_values()
+    list_tasks()
+    try:
+        task_to_modify = int(input("Enter the index no of the task to modify: "))
+        if task_to_modify > 1 and task_to_modify <= len(tasks) - 1:
+
+
 def delete_task():
     """
     A function to delete a task
@@ -116,12 +129,15 @@ def delete_task():
         task_to_delete = int(input("Enter the index no to delete the task: "))
         if task_to_delete > 1 and task_to_delete <= len(tasks) - 1:
             # Delete the corresponding row from the worksheet
-            task_sheet.delete_rows(task_to_delete + 1)  # Adding 1 to match the indexing used in list_tasks
+            # Adding 1 to match the indexing used in list_tasks
+            task_sheet.delete_rows(task_to_delete + 1)
             print(f"Task'{task_to_delete}'has been deleted")
         else:
             print(f"Task '{task_to_delete}' not found")
     except ValueError:
         print("Invalid input. Please enter a valid index.")
+
+
 def main():
     """
     This function has the options to be chosen by the user.
@@ -148,4 +164,6 @@ def main():
             break
         else:
             print("Please enter the valid number")
+
+
 main()
