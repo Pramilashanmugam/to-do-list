@@ -54,7 +54,7 @@ def add_task():
     I have used a loop to ensure the user enters the valid date in the format of DD/MM/YYYY
     """
 
-    # Get the current date
+    # Get the current date using library
     current_date = datetime.now().date()
 
     # Get the number of rows in the worksheet
@@ -89,7 +89,7 @@ def add_task():
     # Append a new row with the task details
     tasks = task_sheet.get_all_values()
     task_sheet.append_row([task_input, date])
-    print(f"A new task '{tasks[-1]}' had been added to the list")
+    print(f"\nA new task '{task_input}' with deadline {date} has been successfully added 👍")
 
 
 def list_tasks():
@@ -106,16 +106,15 @@ def list_tasks():
             print(f"{index}:    {task[0]}            (Deadline: {task[1]})")
 
 
-def modify_task():
-    """
+"""def m
     a function to modify an existing task
-    """
+   
     # Fetch tasks from the worksheet
     tasks = task_sheet.get_all_values()
     list_tasks()
     try:
         task_to_modify = int(input("Enter the index no of the task to modify: "))
-        if task_to_modify > 1 and task_to_modify <= len(tasks) - 1:
+        if task_to_modify > 1 and task_to_modify <= len(tasks) - 1:"""
 
 
 def delete_task():
@@ -144,14 +143,15 @@ def main():
     Depending on the input received, the program will call the respective function.
     """
     while True:
-        print("\nPlease choose an option:")
+        print("\nPlease choose an option from below: ")
+        print("--------------------------------------------------------------")
         print("1. Add Task")
         print("2. Modify Task")
         print("3. View Tasks")
         print("4. Delete Task")
         print("5. Exit")
         choice = int(input("Enter your choice: "))
-        print("----------------------------------------------------")
+        print("--------------------------------------------------------------")
         if choice == 1:
             add_task()
         elif choice == 2:
