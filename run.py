@@ -2,6 +2,7 @@
 importing essential libraries for this project
 """
 from datetime import datetime
+from tabulate import tabulate # library used to display the data in tabular column in view list
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -57,9 +58,6 @@ def add_task():
     # Get the current date using library
     current_date = datetime.now().date()
 
-    # Get the number of rows in the worksheet
-    tasks = task_sheet.get_all_values()
-
     # Asking user to enter the task. Validating for text length and ensure its not empty.
     while True:
         task_input = input("Please add enter your task(max 100 Characters): ")
@@ -87,7 +85,7 @@ def add_task():
             break
 
     # Append a new row with the task details
-    tasks = task_sheet.get_all_values()
+    tasks = task_sheet.get_all_values() # Get the number of rows in the worksheet
     task_sheet.append_row([task_input, date])
     print(f"\nA new task '{task_input}' with deadline {date} has been successfully added 👍")
 
@@ -100,10 +98,14 @@ def list_tasks():
     if not tasks:
         print("There is no tasks currently")
     else:
+        table_data = [["Index", "Tasks", "Deadline"]]
+        for index, task in enumerate(tasks[0:], start=1):
+            task_input = task[0]
+            deadline = task[1]
+            table_data.append([index, task_input, deadline])
+        
         print("Current tasks:")
-        print("Index:Tasks                    : Deadline")
-        for index, task in enumerate(tasks[1:], start=1):
-            print(f"{index}:    {task[0]}            (Deadline: {task[1]})")
+        print(tabulate(table_data, headers="firstrow", tablefmt="grid"))
 
 
 """def m
