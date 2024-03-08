@@ -2,7 +2,7 @@
 importing essential libraries for this project
 """
 from datetime import datetime
-from colorama import Fore, Back
+from colorama import Fore
 # library used to display the data in tabular column in view list
 from tabulate import tabulate
 import gspread
