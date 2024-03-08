@@ -92,8 +92,8 @@ def add_task():
 
     # Append a new row with the task details
     task_sheet.append_row([task_input, date])
-    print(f"\nA new task '{task_input}' with deadline {
-          date} has been successfully added 👍")
+    print(f"\nA new task '{task_input}' with deadline "
+      f"{date} has been successfully added 👍")
 
 
 def list_tasks():
