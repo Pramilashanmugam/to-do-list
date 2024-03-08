@@ -60,7 +60,7 @@ def add_task():
 
     # Asking user to enter the task. Validating for text length and ensure its not empty.
     while True:
-        task_input = input("Please add enter your task(max 100 Characters): ")
+        task_input = input("Please add enter your task 🗒 (max 100 Characters): ")
         if not task_input:
             print("Task cannot be empty. Please enter a task")
         elif len(task_input) > 100:
@@ -69,10 +69,10 @@ def add_task():
             break
     # Checking for valid date and loops until valid date is received
     while True:
-        date = input("Please enter the date for completion(dd/mm/yyyy): ")
+        date = input("Please enter the date 📅 for completion(dd/mm/yyyy): ")
         # Validate date format
         if not validate_date(date):
-            print("Invalid date format. Please enter date in dd/mm/yyyy format.")
+            print("Invalid date format. Please enter date 📅 in dd/mm/yyyy format.")
             continue
         # Convert the input date string to a datetime object
         deadline = datetime.strptime(date, '%d/%m/%Y').date()
@@ -94,8 +94,8 @@ def list_tasks():
     list done the tasks in the spreadsheet
     """
     tasks = task_sheet.get_all_values()
-    if not tasks:
-        print("There is no tasks currently")
+    if not tasks[1:]:
+        print("No task found 😥")
     else:
         table_data = [["Index", "Tasks", "Deadline"]]
         for index, task in enumerate(tasks[1:], start=1):
