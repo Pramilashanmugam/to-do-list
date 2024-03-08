@@ -99,7 +99,7 @@ def list_tasks():
         print("There is no tasks currently")
     else:
         table_data = [["Index", "Tasks", "Deadline"]]
-        for index, task in enumerate(tasks[0:], start=1):
+        for index, task in enumerate(tasks[1:], start=1):
             task_input = task[0]
             deadline = task[1]
             table_data.append([index, task_input, deadline])
@@ -128,7 +128,7 @@ def delete_task():
     list_tasks()
     try:
         task_to_delete = int(input("Enter the index no to delete the task: "))
-        if task_to_delete > 1 and task_to_delete <= len(tasks) - 1:
+        if task_to_delete >= 1 and task_to_delete <= len(tasks) - 1:
             # Delete the corresponding row from the worksheet
             # Adding 1 to match the indexing used in list_tasks
             task_sheet.delete_rows(task_to_delete + 1)
