@@ -69,7 +69,7 @@ def add_task():
             break
     # Checking for valid date and loops until valid date is received
     while True:
-        date = input("Please enter the date for completion(dd/mm/yyyy):")
+        date = input("Please enter the date for completion(dd/mm/yyyy): ")
         # Validate date format
         if not validate_date(date):
             print("Invalid date format. Please enter date in dd/mm/yyyy format.")
@@ -85,7 +85,6 @@ def add_task():
             break
 
     # Append a new row with the task details
-    tasks = task_sheet.get_all_values() # Get the number of rows in the worksheet
     task_sheet.append_row([task_input, date])
     print(f"\nA new task '{task_input}' with deadline {date} has been successfully added 👍")
 
@@ -103,21 +102,8 @@ def list_tasks():
             task_input = task[0]
             deadline = task[1]
             table_data.append([index, task_input, deadline])
-        
         print("Current tasks:")
         print(tabulate(table_data, headers="firstrow", tablefmt="grid"))
-
-
-"""def m
-    a function to modify an existing task
-   
-    # Fetch tasks from the worksheet
-    tasks = task_sheet.get_all_values()
-    list_tasks()
-    try:
-        task_to_modify = int(input("Enter the index no of the task to modify: "))
-        if task_to_modify > 1 and task_to_modify <= len(tasks) - 1:"""
-
 
 def delete_task():
     """
@@ -128,7 +114,7 @@ def delete_task():
     list_tasks()
     try:
         task_to_delete = int(input("Enter the index no to delete the task: "))
-        if task_to_delete >= 1 and task_to_delete <= len(tasks) - 1:
+        if task_to_delete >= 1 and task_to_delete <= len(tasks):
             # Delete the corresponding row from the worksheet
             # Adding 1 to match the indexing used in list_tasks
             task_sheet.delete_rows(task_to_delete + 1)
@@ -148,21 +134,23 @@ def main():
         print("\nPlease choose an option from below: ")
         print("--------------------------------------------------------------")
         print("1. Add Task")
-        print("2. Modify Task")
-        print("3. View Tasks")
-        print("4. Delete Task")
-        print("5. Exit")
-        choice = int(input("Enter your choice: "))
+        print("2. View Tasks")
+        print("3. Delete Task")
+        print("4. Exit")
+        try:
+            choice = int(input("Enter your choice: "))
+        except ValueError:
+            # if any value other than integer received then error message reflects
+            print("Invalid input. Please enter a valid number.")
+            continue
         print("--------------------------------------------------------------")
         if choice == 1:
             add_task()
         elif choice == 2:
-            print("currently under process")
-        elif choice == 3:
             list_tasks()
-        elif choice == 4:
+        elif choice == 3:
             delete_task()
-        elif choice == 5:
+        elif choice == 4:
             break
         else:
             print("Please enter the valid number")
