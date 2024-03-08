@@ -149,7 +149,7 @@ def main():
         print("4. Exit")
         try:
             choice = int(
-                input(Fore.GREEN + "Enter your choice: " + Fore.RESET))
+                input(Fore.GREEN + "\nEnter your choice: " + Fore.RESET))
         except ValueError:
             # if any value other than integer received then error message reflects
             print("Invalid input. Please enter a valid number.")
@@ -166,6 +166,6 @@ def main():
             break
         else:
             print("Please enter the valid number")
-
+    print("Good Bye 👋👋")
 
 main()
