@@ -25,7 +25,9 @@ SHEET = GSPREAD_CLIENT.open('todolist')
 task_sheet = SHEET.worksheet('tasks')
 
 
-print(Fore.BLUE + """\n▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▌
+print(
+    Fore.BLUE +
+    """\n▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▌
 ▐  ███████████                 █████             ████   ███           █████    ▌
 ▐ ░█░░░███░░░█                ░░███             ░░███  ░░░           ░░███     ▌
 ▐ ░   ░███  ░   ██████      ███████   ██████     ░███  ████   █████  ███████   ▌
@@ -63,7 +65,7 @@ def add_task():
     # Asking user to enter the task. Validating for text length and ensure its not empty.
     while True:
         task_input = input(
-            Fore.LIGHTMAGENTA_EX + "Please add enter your task 🗒 (max 100 Characters): " + Fore.RESET)
+        Fore.LIGHTMAGENTA_EX + "Please add enter your task 🗒 (max 100 Characters): " + Fore.RESET)
         if not task_input:
             print("Task cannot be empty. Please enter a task")
         elif len(task_input) > 100:
@@ -72,7 +74,8 @@ def add_task():
             break
     # Checking for valid date and loops until valid date is received
     while True:
-        date = input(Fore.LIGHTMAGENTA_EX + "Please enter the date 📅 for completion(dd/mm/yyyy): " + Fore.RESET)
+        date = input(Fore.LIGHTMAGENTA_EX +
+                     "Please enter the date 📅 for completion(dd/mm/yyyy): " + Fore.RESET)
         # Validate date format
         if not validate_date(date):
             print("Invalid date format. Please enter date 📅 in dd/mm/yyyy format.")
@@ -101,12 +104,13 @@ def list_tasks():
     if not tasks[1:]:
         print(Fore.RED + "No task found 😥" + Fore.RESET)
     else:
-        table_data = [[Fore.LIGHTMAGENTA_EX + "Index", "Tasks", "Deadline"  + Fore.RESET]]
+        table_data = [[Fore.LIGHTMAGENTA_EX + "Index",
+                       "Tasks", "Deadline" + Fore.RESET]]
         for index, task in enumerate(tasks[1:], start=1):
             task_input = task[0]
             deadline = task[1]
             table_data.append([index, task_input, deadline])
-        print(Fore.YELLOW+ "Current tasks:" + Fore.RESET)
+        print(Fore.YELLOW + "Current tasks:" + Fore.RESET)
         print(tabulate(table_data, headers="firstrow", tablefmt="grid"))
 
 
@@ -123,7 +127,8 @@ def delete_task():
             # Delete the corresponding row from the worksheet
             # Adding 1 to match the indexing used in list_tasks
             task_sheet.delete_rows(task_to_delete + 1)
-            print(Fore.RED + f"Task'{task_to_delete}'has been deleted" + Fore.RESET)
+            print(
+                Fore.RED + f"Task'{task_to_delete}'has been deleted" + Fore.RESET)
         else:
             print(f"Task '{task_to_delete}' not found")
     except ValueError:
@@ -143,12 +148,14 @@ def main():
         print("3. Delete Task")
         print("4. Exit")
         try:
-            choice = int(input(Fore.GREEN + "Enter your choice: " + Fore.RESET))
+            choice = int(
+                input(Fore.GREEN + "Enter your choice: " + Fore.RESET))
         except ValueError:
             # if any value other than integer received then error message reflects
             print("Invalid input. Please enter a valid number.")
             continue
-        print(Fore.GREEN + "--------------------------------------------------------------" + Fore.RESET)
+        print(Fore.GREEN +
+        "--------------------------------------------------------------" + Fore.RESET)
         if choice == 1:
             add_task()
         elif choice == 2:
