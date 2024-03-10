@@ -36,7 +36,7 @@ print(
 ▐     ░███    ░███ ░███   ░███ ░███ ░███ ░███    ░███  ░███  ░░░░███  ░███ ███ ▌
 ▐     █████   ░░██████    ░░████████░░██████     █████ █████ ██████   ░░█████  ▌
 ▐    ░░░░░     ░░░░░░      ░░░░░░░░  ░░░░░░     ░░░░░ ░░░░░ ░░░░░░     ░░░░░   ▌
-▐▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▌""" + Fore.RESET)
+▐▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▌""" + 39)
 print("\nWelcome to your To do list app!💡")
 print("\nThis app helps you to keep track on your day to day activities.\n")
 print("You can add, delete, view or modify your tasks in this app\n")
@@ -65,7 +65,7 @@ def add_task():
     # Asking user to enter the task. Validating for text length and ensure its not empty.
     while True:
         task_input = input(
-        Fore.LIGHTCYAN_EX + "Please add enter your task 🗒 (max 100 Characters): " + Fore.RESET)
+            Fore.LIGHTCYAN_EX + "Please add enter your task 🗒 (max 100 Characters): " + Fore.RESET)
         if not task_input:
             print("Task cannot be empty. Please enter a task")
         elif len(task_input) > 100:
@@ -93,7 +93,7 @@ def add_task():
     # Append a new row with the task details
     task_sheet.append_row([task_input, date])
     print(Fore.LIGHTCYAN_EX + f"\nA new task '{task_input}' with deadline "
-      f"{date} has been successfully added 👍" + Fore.RESET)
+          f"{date} has been successfully added 👍" + Fore.RESET)
 
 
 def list_tasks():
@@ -105,7 +105,7 @@ def list_tasks():
         print(Fore.RED + "No task found 😥" + Fore.RESET)
     else:
         table_data = [[Fore.LIGHTCYAN_EX + "Index",
-                       "Tasks", "Deadline" + Fore.RESET]]
+                       "Tasks", "Deadline" + 39]]
         for index, task in enumerate(tasks[1:], start=1):
             task_input = task[0]
             deadline = task[1]
@@ -122,13 +122,14 @@ def delete_task():
     tasks = task_sheet.get_all_values()
     list_tasks()
     try:
-        task_to_delete = int(input(Fore.GREEN + "\nEnter the index no to delete the task: " + Fore.RESET))
+        task_to_delete = int(input(Fore.GREEN +
+                                   "\nEnter the index no to delete the task: " + Fore.RESET))
         if task_to_delete >= 1 and task_to_delete <= len(tasks):
             # Delete the corresponding row from the worksheet
             # Adding 1 to match the indexing used in list_tasks
             task_sheet.delete_rows(task_to_delete + 1)
-            print(
-                Fore.RED + f"\nTask no'{task_to_delete}'has been successfully deleted" + Fore.RESET)
+            print(Fore.RED + f"\nTask no '{task_to_delete}' "
+                  f"has been successfully deleted" + Fore.RESET)
         else:
             print(f"\nTask not found: '{task_to_delete}' ")
     except ValueError:
@@ -142,20 +143,20 @@ def main():
     """
     while True:
         print(Fore.GREEN + "\nPlease choose an option from below: ")
-        print("--------------------------------------------------------------" + Fore.RESET)
+        print("--------------------------------------------------------------" + 39)
         print("1. Add Task")
         print("2. View Tasks")
         print("3. Delete Task")
         print("4. Exit")
         try:
             choice = int(
-                input(Fore.GREEN + "\nEnter your choice: " + Fore.RESET))
+                input(Fore.GREEN + "\nEnter your choice: " + 39))
         except ValueError:
             # if any value other than integer received then error message reflects
             print("Invalid input. Please enter a valid number.")
             continue
         print(Fore.GREEN +
-        "--------------------------------------------------------------" + Fore.RESET)
+              "--------------------------------------------------------------" + 39)
         if choice == 1:
             add_task()
         elif choice == 2:
@@ -166,6 +167,9 @@ def main():
             break
         else:
             print("Please enter the valid number")
-    print("Good Bye 👋 👋")
+    print("\nGood Bye 👋 👋")
+    print(Fore.LIGHTGREEN_EX +
+          "\nTo start the app again, Press the Run Program button")
+
 
 main()
