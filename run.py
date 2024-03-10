@@ -145,20 +145,24 @@ def update_task():
     tasks = task_sheet.get_all_values()
     list_tasks()
     try:
-        task_to_update = int(input("\nEnter the index no of the task to update: "))
+        task_to_update = int(input(
+            Fore.LIGHTGREEN_EX + "\nEnter the index no of the task to update: " + Fore.RESET))
+
         if task_to_update >= 1 and task_to_update < len(tasks):
             # Retrieve task information
             task_to_modify = tasks[task_to_update]
             print(f"\nCurrent Task: {task_to_modify[0]}"
                   f" with Deadline: {task_to_modify[1]}")
             # Prompt user for updated task details
-            updated_task = input("\nEnter the updated task description: ")
+            updated_task = input(
+                Fore.LIGHTCYAN_EX + "\nEnter the updated task description: " + Fore.RESET)
             updated_deadline = input(
-                "\nEnter the updated deadline (dd/mm/yyyy): ")
+                Fore.LIGHTCYAN_EX + "\nEnter the updated deadline (dd/mm/yyyy): " + Fore.RESET)
             while not validate_date(updated_deadline):
-                print("\nInvalid date format. Please enter date in dd/mm/yyyy format.")
-                updated_deadline = input(
-                    "\nEnter the updated deadline (dd/mm/yyyy): ")
+                print(Fore.LIGHTRED_EX +
+                      "\nInvalid date format. Please enter date in dd/mm/yyyy format." + Fore.RESET)
+                updated_deadline = input(Fore.LIGHTCYAN_EX +
+                                         "Enter the updated deadline (dd/mm/yyyy): " + Fore.RESET)
                 # Update the corresponding row in the worksheet
             task_sheet.update([[updated_task, updated_deadline]],
                               f'{task_to_update+1}:{task_to_update+1}')
@@ -168,7 +172,8 @@ def update_task():
             print(Fore.LIGHTRED_EX +
                   f"\nTask '{task_to_update}' not found" + Fore.RESET)
     except ValueError:
-        print("\nInvalid input. Please enter a valid index.")
+        print(Fore.LIGHTRED_EX +
+              "\nInvalid input. Please enter a valid index." + Fore.RESET)
 
 
 def main():
