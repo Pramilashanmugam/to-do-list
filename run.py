@@ -123,7 +123,7 @@ def delete_task():
     list_tasks()
     try:
         user_input_delete = int(input(Fore.LIGHTGREEN_EX +
-                                   "\nEnter the index no to delete the task: " + Fore.RESET))
+                                      "\nEnter the index no to delete the task: " + Fore.RESET))
         task_to_delete = user_input_delete + 1
         if task_to_delete > 1 and task_to_delete <= len(tasks):
             # Delete the corresponding row from the worksheet
@@ -146,7 +146,9 @@ def update_task():
     list_tasks()
     try:
         task_to_update = int(
-            input(Fore.LIGHTYELLOW_EX + "\nEnter the index no of the task to update: ") + Fore.RESET)
+            Fore.LIGHTYELLOW_EX +
+            input("\nEnter the index no of the task to update: ")
+            + Fore.RESET)
         if task_to_update >= 1 and task_to_update < len(tasks):
             # Retrieve task information
             task_to_modify = tasks[task_to_update]
@@ -163,9 +165,11 @@ def update_task():
                 # Update the corresponding row in the worksheet
             task_sheet.update([[updated_task, updated_deadline]],
                               f'{task_to_update+1}:{task_to_update+1}')
-            print(Fore.LIGHTYELLOW_EX + "\nTask updated successfully." + Fore.RESET)
+            print(Fore.LIGHTYELLOW_EX +
+                  "\nTask updated successfully." + Fore.RESET)
         else:
-            print(Fore.LIGHTRED_EX + f"\nTask '{task_to_update}' not found" + Fore.RESET)
+            print(Fore.LIGHTRED_EX +
+                  f"\nTask '{task_to_update}' not found" + Fore.RESET)
     except ValueError:
         print("\nInvalid input. Please enter a valid index.")
 
