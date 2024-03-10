@@ -150,7 +150,7 @@ def update_task():
             # Retrieve task information
             task_to_modify = tasks[task_to_update]
             print(f"Current Task: {task_to_modify[0]}"
-                 f"(Deadline: {task_to_modify[1]})")
+                  f"(Deadline: {task_to_modify[1]})")
             # Prompt user for updated task details
             updated_task = input("Enter the updated task description: ")
             updated_deadline = input(
@@ -160,13 +160,14 @@ def update_task():
                 updated_deadline = input(
                     "Enter the updated deadline (dd/mm/yyyy): ")
                 # Update the corresponding row in the worksheet
-            task_sheet.update(f'{task_to_update+1}:{task_to_update+1}', [
-                              [updated_task, updated_deadline]])
+            task_sheet.update([[updated_task, updated_deadline]],
+                              f'{task_to_update+1}:{task_to_update+1}')
             print("Task updated successfully.")
         else:
             print(f"Task '{task_to_update}' not found")
     except ValueError:
         print("Invalid input. Please enter a valid index.")
+
 
 def main():
     """
