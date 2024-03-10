@@ -136,6 +136,38 @@ def delete_task():
         print("\nInvalid input. Please enter a valid index.")
 
 
+def update_task():
+    """
+    A function to update an existing task
+    """
+    # Fetch tasks from the worksheet
+    tasks = task_sheet.get_all_values()
+    list_tasks()
+    try:
+        task_to_update = int(
+            input("Enter the index no of the task to update: "))
+        if task_to_update >= 1 and task_to_update <= len(tasks):
+            # Retrieve task information
+            task_to_modify = tasks[task_to_update - 1]
+            print(f"Current Task: {
+                  task_to_modify[0]} (Deadline: {task_to_modify[1]})")
+            # Prompt user for updated task details
+            updated_task = input("Enter the updated task description: ")
+            updated_deadline = input(
+                "Enter the updated deadline (dd/mm/yyyy): ")
+            while not validate_date(updated_deadline):
+                print("Invalid date format. Please enter date in dd/mm/yyyy format.")
+                updated_deadline = input(
+                    "Enter the updated deadline (dd/mm/yyyy): ")
+                # Update the corresponding row in the worksheet
+            task_sheet.update(f'A{task_to_update}:B{task_to_update}', [
+                              [updated_task, updated_deadline]])
+            print("Task updated successfully.")
+        else:
+            print(f"Task '{task_to_update}' not found")
+    except ValueError:
+        print("Invalid input. Please enter a valid index.")
+
 def main():
     """
     This function has the options to be chosen by the user.
@@ -147,6 +179,7 @@ def main():
         print("1. Add Task")
         print("2. View Tasks")
         print("3. Delete Task")
+        print("4. Edit Task")
         print("4. Exit")
         try:
             choice = int(
@@ -164,6 +197,8 @@ def main():
         elif choice == 3:
             delete_task()
         elif choice == 4:
+            update_task()
+        elif choice == 5:
             break
         else:
             print("Please enter the valid number")
