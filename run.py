@@ -36,7 +36,7 @@ print(
 ▐     ░███    ░███ ░███   ░███ ░███ ░███ ░███    ░███  ░███  ░░░░███  ░███ ███ ▌
 ▐     █████   ░░██████    ░░████████░░██████     █████ █████ ██████   ░░█████  ▌
 ▐    ░░░░░     ░░░░░░      ░░░░░░░░  ░░░░░░     ░░░░░ ░░░░░ ░░░░░░     ░░░░░   ▌
-▐▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▌""" + 39)
+▐▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▌""" + Fore.RESET)
 print("\nWelcome to your To do list app!💡")
 print("\nThis app helps you to keep track on your day to day activities.\n")
 print("You can add, delete, view or modify your tasks in this app\n")
@@ -105,7 +105,7 @@ def list_tasks():
         print(Fore.RED + "No task found 😥" + Fore.RESET)
     else:
         table_data = [[Fore.LIGHTCYAN_EX + "Index",
-                       "Tasks", "Deadline" + 39]]
+                       "Tasks", "Deadline" + Fore.RESET]]
         for index, task in enumerate(tasks[1:], start=1):
             task_input = task[0]
             deadline = task[1]
@@ -143,20 +143,20 @@ def main():
     """
     while True:
         print(Fore.GREEN + "\nPlease choose an option from below: ")
-        print("--------------------------------------------------------------" + 39)
+        print("--------------------------------------------------------------" + Fore.RESET)
         print("1. Add Task")
         print("2. View Tasks")
         print("3. Delete Task")
         print("4. Exit")
         try:
             choice = int(
-                input(Fore.GREEN + "\nEnter your choice: " + 39))
+                input(Fore.GREEN + "\nEnter your choice: " + Fore.RESET))
         except ValueError:
             # if any value other than integer received then error message reflects
             print("Invalid input. Please enter a valid number.")
             continue
         print(Fore.GREEN +
-              "--------------------------------------------------------------" + 39)
+              "--------------------------------------------------------------" + Fore.RESET)
         if choice == 1:
             add_task()
         elif choice == 2:
