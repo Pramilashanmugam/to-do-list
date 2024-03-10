@@ -38,7 +38,7 @@ print(
 ▐    ░░░░░     ░░░░░░      ░░░░░░░░  ░░░░░░     ░░░░░ ░░░░░ ░░░░░░     ░░░░░   ▌
 ▐▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▌""" + Fore.RESET)
 print("\nWelcome to your To do list app!💡")
-print("\nThis app helps you to keep track of your day to day activities.\n")
+print("\nThis app helps you to keep track on your day to day activities.\n")
 print("You can add, delete, view or modify your tasks in this app\n")
 
 
@@ -110,7 +110,7 @@ def list_tasks():
             task_input = task[0]
             deadline = task[1]
             table_data.append([index, task_input, deadline])
-        print(Fore.YELLOW + "Current tasks:" + Fore.RESET)
+        print(Fore.LIGHTYELLOW_EX + "\nCurrent tasks:" + Fore.RESET)
         print(tabulate(table_data, headers="firstrow", tablefmt="grid"))
 
 
@@ -122,17 +122,17 @@ def delete_task():
     tasks = task_sheet.get_all_values()
     list_tasks()
     try:
-        task_to_delete = int(input("Enter the index no to delete the task: "))
+        task_to_delete = int(input(Fore.GREEN + "\nEnter the index no to delete the task: " + Fore.RESET))
         if task_to_delete >= 1 and task_to_delete <= len(tasks):
             # Delete the corresponding row from the worksheet
             # Adding 1 to match the indexing used in list_tasks
             task_sheet.delete_rows(task_to_delete + 1)
             print(
-                Fore.RED + f"Task no'{task_to_delete}'has been successfully deleted" + Fore.RESET)
+                Fore.RED + f"\nTask no'{task_to_delete}'has been successfully deleted" + Fore.RESET)
         else:
-            print(f"Task not found: '{task_to_delete}' ")
+            print(f"\nTask not found: '{task_to_delete}' ")
     except ValueError:
-        print("Invalid input. Please enter a valid index.")
+        print("\nInvalid input. Please enter a valid index.")
 
 
 def main():
