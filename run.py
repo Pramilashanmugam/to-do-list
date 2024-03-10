@@ -146,11 +146,11 @@ def update_task():
     list_tasks()
     try:
         task_to_update = int(
-            input(Fore.LIGHTYELLOW_EX + "\nEnter the index no of the task to update: \n") + Fore.RESET)
+            input(Fore.LIGHTYELLOW_EX + "\nEnter the index no of the task to update: ") + Fore.RESET)
         if task_to_update >= 1 and task_to_update < len(tasks):
             # Retrieve task information
             task_to_modify = tasks[task_to_update]
-            print(f"Current Task: {task_to_modify[0]}"
+            print(f"\nCurrent Task: {task_to_modify[0]}"
                   f" with Deadline: {task_to_modify[1]}")
             # Prompt user for updated task details
             updated_task = input("\nEnter the updated task description: ")
