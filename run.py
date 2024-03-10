@@ -67,18 +67,18 @@ def add_task():
         task_input = input(
             Fore.LIGHTCYAN_EX + "Please add enter your task 🗒 (max 100 Characters): " + Fore.RESET)
         if not task_input:
-            print("Task cannot be empty. Please enter a task")
+            print("\nTask cannot be empty. Please enter a task")
         elif len(task_input) > 100:
-            print("Task cannot exceed 100 Characters. Please enter a shorter Task.")
+            print("\nTask cannot exceed 100 Characters. Please enter a shorter Task.")
         else:
             break
     # Checking for valid date and loops until valid date is received
     while True:
         date = input(Fore.LIGHTCYAN_EX +
-                     "Please enter the date 📅 for completion(dd/mm/yyyy): " + Fore.RESET)
+                     "\nPlease enter the date 📅 for completion(dd/mm/yyyy): " + Fore.RESET)
         # Validate date format
         if not validate_date(date):
-            print("Invalid date format. Please enter date 📅 in dd/mm/yyyy format.")
+            print("\nInvalid date format. Please enter date 📅 in dd/mm/yyyy format.")
             continue
         # Convert the input date string to a datetime object
         deadline = datetime.strptime(date, '%d/%m/%Y').date()
@@ -86,7 +86,7 @@ def add_task():
         # Check if the deadline date is in the past
         if deadline < current_date:
             print(
-                "Deadline date for completion cannot be in the past. Please enter a future date.")
+                "\nDeadline date for completion cannot be in the past. Please enter a future date.")
         else:
             break
 
@@ -102,7 +102,7 @@ def list_tasks():
     """
     tasks = task_sheet.get_all_values()
     if not tasks[1:]:
-        print(Fore.RED + "No task found 😥" + Fore.RESET)
+        print(Fore.RED + "\nNo task found 😥" + Fore.RESET)
     else:
         table_data = [[Fore.LIGHTCYAN_EX + "Index",
                        "Tasks", "Deadline" + Fore.RESET]]
@@ -110,7 +110,7 @@ def list_tasks():
             task_input = task[0]
             deadline = task[1]
             table_data.append([index, task_input, deadline])
-        print(Fore.LIGHTYELLOW_EX + "\nCurrent tasks:" + Fore.RESET)
+        print(Fore.LIGHTYELLOW_EX + "\nCurrent tasks: " + Fore.RESET)
         print(tabulate(table_data, headers="firstrow", tablefmt="grid"))
 
 
@@ -146,28 +146,28 @@ def update_task():
     list_tasks()
     try:
         task_to_update = int(
-            input("Enter the index no of the task to update: "))
+            input(Fore.LIGHTYELLOW_EX + "\nEnter the index no of the task to update: \n") + Fore.RESET)
         if task_to_update >= 1 and task_to_update < len(tasks):
             # Retrieve task information
             task_to_modify = tasks[task_to_update]
             print(f"Current Task: {task_to_modify[0]}"
-                  f"(Deadline: {task_to_modify[1]})")
+                  f" with Deadline: {task_to_modify[1]}")
             # Prompt user for updated task details
-            updated_task = input("Enter the updated task description: ")
+            updated_task = input("\nEnter the updated task description: ")
             updated_deadline = input(
-                "Enter the updated deadline (dd/mm/yyyy): ")
+                "\nEnter the updated deadline (dd/mm/yyyy): ")
             while not validate_date(updated_deadline):
-                print("Invalid date format. Please enter date in dd/mm/yyyy format.")
+                print("\nInvalid date format. Please enter date in dd/mm/yyyy format.")
                 updated_deadline = input(
-                    "Enter the updated deadline (dd/mm/yyyy): ")
+                    "\nEnter the updated deadline (dd/mm/yyyy): ")
                 # Update the corresponding row in the worksheet
             task_sheet.update([[updated_task, updated_deadline]],
                               f'{task_to_update+1}:{task_to_update+1}')
-            print("Task updated successfully.")
+            print(Fore.LIGHTYELLOW_EX + "\nTask updated successfully." + Fore.RESET)
         else:
-            print(f"Task '{task_to_update}' not found")
+            print(Fore.LIGHTRED_EX + f"\nTask '{task_to_update}' not found" + Fore.RESET)
     except ValueError:
-        print("Invalid input. Please enter a valid index.")
+        print("\nInvalid input. Please enter a valid index.")
 
 
 def main():
