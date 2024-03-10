@@ -146,7 +146,7 @@ def update_task():
     try:
         task_to_update = int(
             input("Enter the index no of the task to update: "))
-        if task_to_update > 1 and task_to_update <= len(tasks):
+        if task_to_update >= 1 and task_to_update <= len(tasks):
             # Retrieve task information
             task_to_modify = tasks[task_to_update]
             print(f"Current Task: {task_to_modify[0]}"
@@ -160,7 +160,7 @@ def update_task():
                 updated_deadline = input(
                     "Enter the updated deadline (dd/mm/yyyy): ")
                 # Update the corresponding row in the worksheet
-            task_sheet.update(f'A{task_to_update}:B{task_to_update}', [
+            task_sheet.update(f'A{task_to_update+1}:B{task_to_update+1}', [
                               [updated_task, updated_deadline]])
             print("Task updated successfully.")
         else:
