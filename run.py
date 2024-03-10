@@ -168,7 +168,7 @@ def main():
         else:
             print("Please enter the valid number")
     print("\nGood Bye 👋 👋")
-    print(Fore.BLUE +
+    print(Fore.LIGHTBLUE_EX +
           "\nTo start the app again, Press the Run Program button")
 
 
