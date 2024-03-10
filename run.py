@@ -160,7 +160,7 @@ def update_task():
                 updated_deadline = input(
                     "Enter the updated deadline (dd/mm/yyyy): ")
                 # Update the corresponding row in the worksheet
-            task_sheet.update(f'A{task_to_update+1}:B{task_to_update+1}', [
+            task_sheet.update(f'{task_to_update+1}:{task_to_update+1}', [
                               [updated_task, updated_deadline]])
             print("Task updated successfully.")
         else:
