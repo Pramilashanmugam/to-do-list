@@ -180,7 +180,7 @@ def main():
         print("2. View Tasks")
         print("3. Delete Task")
         print("4. Edit Task")
-        print("4. Exit")
+        print("5. Exit")
         try:
             choice = int(
                 input(Fore.LIGHTGREEN_EX + "\nEnter your choice: " + Fore.RESET))
