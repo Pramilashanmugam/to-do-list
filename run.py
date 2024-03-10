@@ -145,10 +145,7 @@ def update_task():
     tasks = task_sheet.get_all_values()
     list_tasks()
     try:
-        task_to_update = int(
-            Fore.LIGHTYELLOW_EX +
-            input("\nEnter the index no of the task to update: ")
-            + Fore.RESET)
+        task_to_update = int(input("\nEnter the index no of the task to update: "))
         if task_to_update >= 1 and task_to_update < len(tasks):
             # Retrieve task information
             task_to_modify = tasks[task_to_update]
