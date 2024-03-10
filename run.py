@@ -38,7 +38,7 @@ print(
 ▐    ░░░░░     ░░░░░░      ░░░░░░░░  ░░░░░░     ░░░░░ ░░░░░ ░░░░░░     ░░░░░   ▌
 ▐▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▌""" + Fore.RESET)
 print("\nWelcome to your To do list app!💡")
-print("This app helps you to keep track of your day to day activities.\n")
+print("\nThis app helps you to keep track of your day to day activities.\n")
 print("You can add, delete, view or modify your tasks in this app\n")
 
 
@@ -65,7 +65,7 @@ def add_task():
     # Asking user to enter the task. Validating for text length and ensure its not empty.
     while True:
         task_input = input(
-        Fore.LIGHTMAGENTA_EX + "Please add enter your task 🗒 (max 100 Characters): " + Fore.RESET)
+        Fore.LIGHTCYAN_EX + "Please add enter your task 🗒 (max 100 Characters): " + Fore.RESET)
         if not task_input:
             print("Task cannot be empty. Please enter a task")
         elif len(task_input) > 100:
@@ -74,7 +74,7 @@ def add_task():
             break
     # Checking for valid date and loops until valid date is received
     while True:
-        date = input(Fore.LIGHTMAGENTA_EX +
+        date = input(Fore.LIGHTCYAN_EX +
                      "Please enter the date 📅 for completion(dd/mm/yyyy): " + Fore.RESET)
         # Validate date format
         if not validate_date(date):
@@ -92,8 +92,8 @@ def add_task():
 
     # Append a new row with the task details
     task_sheet.append_row([task_input, date])
-    print(f"\nA new task '{task_input}' with deadline "
-      f"{date} has been successfully added 👍")
+    print(Fore.LIGHTCYAN_EX + f"\nA new task '{task_input}' with deadline "
+      f"{date} has been successfully added 👍" + Fore.RESET)
 
 
 def list_tasks():
@@ -104,7 +104,7 @@ def list_tasks():
     if not tasks[1:]:
         print(Fore.RED + "No task found 😥" + Fore.RESET)
     else:
-        table_data = [[Fore.LIGHTMAGENTA_EX + "Index",
+        table_data = [[Fore.LIGHTCYAN_EX + "Index",
                        "Tasks", "Deadline" + Fore.RESET]]
         for index, task in enumerate(tasks[1:], start=1):
             task_input = task[0]
@@ -128,9 +128,9 @@ def delete_task():
             # Adding 1 to match the indexing used in list_tasks
             task_sheet.delete_rows(task_to_delete + 1)
             print(
-                Fore.RED + f"Task'{task_to_delete}'has been deleted" + Fore.RESET)
+                Fore.RED + f"Task no'{task_to_delete}'has been successfully deleted" + Fore.RESET)
         else:
-            print(f"Task '{task_to_delete}' not found")
+            print(f"Task not found: '{task_to_delete}' ")
     except ValueError:
         print("Invalid input. Please enter a valid index.")
 
@@ -166,6 +166,6 @@ def main():
             break
         else:
             print("Please enter the valid number")
-    print("Good Bye 👋👋")
+    print("Good Bye 👋 👋")
 
 main()
