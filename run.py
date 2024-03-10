@@ -122,7 +122,7 @@ def delete_task():
     tasks = task_sheet.get_all_values()
     list_tasks()
     try:
-        task_to_delete = int(input(Fore.GREEN +
+        task_to_delete = int(input(Fore.LIGHTGREEN_EX +
                                    "\nEnter the index no to delete the task: " + Fore.RESET))
         if task_to_delete >= 1 and task_to_delete <= len(tasks):
             # Delete the corresponding row from the worksheet
@@ -142,7 +142,7 @@ def main():
     Depending on the input received, the program will call the respective function.
     """
     while True:
-        print(Fore.GREEN + "\nPlease choose an option from below: ")
+        print(Fore.LIGHTGREEN_EX + "\nPlease choose an option from below: ")
         print("--------------------------------------------------------------" + Fore.RESET)
         print("1. Add Task")
         print("2. View Tasks")
@@ -150,12 +150,12 @@ def main():
         print("4. Exit")
         try:
             choice = int(
-                input(Fore.GREEN + "\nEnter your choice: " + Fore.RESET))
+                input(Fore.LIGHTGREEN_EX + "\nEnter your choice: " + Fore.RESET))
         except ValueError:
             # if any value other than integer received then error message reflects
             print("Invalid input. Please enter a valid number.")
             continue
-        print(Fore.GREEN +
+        print(Fore.LIGHTGREEN_EX +
               "--------------------------------------------------------------" + Fore.RESET)
         if choice == 1:
             add_task()
@@ -168,7 +168,7 @@ def main():
         else:
             print("Please enter the valid number")
     print("\nGood Bye 👋 👋")
-    print(Fore.LIGHTGREEN_EX +
+    print(Fore.BLUE +
           "\nTo start the app again, Press the Run Program button")
 
 
