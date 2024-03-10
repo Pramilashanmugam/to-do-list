@@ -146,9 +146,9 @@ def update_task():
     try:
         task_to_update = int(
             input("Enter the index no of the task to update: "))
-        if task_to_update >= 1 and task_to_update <= len(tasks):
+        if task_to_update > 1 and task_to_update <= len(tasks):
             # Retrieve task information
-            task_to_modify = tasks[task_to_update+1]
+            task_to_modify = tasks[task_to_update]
             print(f"Current Task: {task_to_modify[0]}"
                  f"(Deadline: {task_to_modify[1]})")
             # Prompt user for updated task details
