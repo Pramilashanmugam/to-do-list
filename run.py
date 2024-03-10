@@ -125,7 +125,7 @@ def delete_task():
         user_input_delete = int(input(Fore.LIGHTGREEN_EX +
                                    "\nEnter the index no to delete the task: " + Fore.RESET))
         task_to_delete = user_input_delete + 1
-        if task_to_delete > 1 and task_to_delete < len(tasks):
+        if task_to_delete > 1 and task_to_delete <= len(tasks):
             # Delete the corresponding row from the worksheet
             # Adding 1 to match the indexing used in list_tasks
             task_sheet.delete_rows(task_to_delete)
