@@ -149,8 +149,8 @@ def update_task():
         if task_to_update >= 1 and task_to_update <= len(tasks):
             # Retrieve task information
             task_to_modify = tasks[task_to_update - 1]
-            print(f"Current Task: {
-                  task_to_modify[0]} (Deadline: {task_to_modify[1]})")
+            print(f"Current Task: {task_to_modify[0]}"
+                 f"(Deadline: {task_to_modify[1]})")
             # Prompt user for updated task details
             updated_task = input("Enter the updated task description: ")
             updated_deadline = input(
