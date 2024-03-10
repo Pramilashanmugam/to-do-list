@@ -122,16 +122,17 @@ def delete_task():
     tasks = task_sheet.get_all_values()
     list_tasks()
     try:
-        task_to_delete = int(input(Fore.LIGHTGREEN_EX +
+        user_input_delete = int(input(Fore.LIGHTGREEN_EX +
                                    "\nEnter the index no to delete the task: " + Fore.RESET))
-        if task_to_delete >= 1 and task_to_delete <= len(tasks):
+        task_to_delete = user_input_delete + 1
+        if task_to_delete > 1 and task_to_delete < len(tasks):
             # Delete the corresponding row from the worksheet
             # Adding 1 to match the indexing used in list_tasks
-            task_sheet.delete_rows(task_to_delete + 1)
-            print(Fore.RED + f"\nTask no '{task_to_delete}' "
+            task_sheet.delete_rows(task_to_delete)
+            print(Fore.RED + f"\nTask no '{user_input_delete}' "
                   f"has been successfully deleted" + Fore.RESET)
         else:
-            print(f"\nTask not found: '{task_to_delete}' ")
+            print(f"\nTask not found: '{user_input_delete}' ")
     except ValueError:
         print("\nInvalid input. Please enter a valid index.")
 
@@ -146,7 +147,7 @@ def update_task():
     try:
         task_to_update = int(
             input("Enter the index no of the task to update: "))
-        if task_to_update >= 1 and task_to_update <= len(tasks):
+        if task_to_update >= 1 and task_to_update < len(tasks):
             # Retrieve task information
             task_to_modify = tasks[task_to_update]
             print(f"Current Task: {task_to_modify[0]}"
