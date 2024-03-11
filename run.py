@@ -92,7 +92,7 @@ def add_task():
 
     # Append a new row with the task details
     task_sheet.append_row([task_input, date])
-    print(Fore.LIGHTCYAN_EX + f"\nA new task '{task_input}' with deadline "
+    print(Fore.LIGHTYELLOW_EX + f"\nA new task '{task_input}' with deadline "
           f"{date} has been successfully added 👍" + Fore.RESET)
 
 
@@ -132,9 +132,9 @@ def delete_task():
             print(Fore.RED + f"\nTask no '{user_input_delete}' "
                   f"has been successfully deleted" + Fore.RESET)
         else:
-            print(f"\nTask not found: '{user_input_delete}' ")
+            print(Fore.LIGHTRED_EX + f"\nTask not found: '{user_input_delete}' " + Fore.RESET)
     except ValueError:
-        print("\nInvalid input. Please enter a valid index.")
+        print(Fore.LIGHTRED_EX + "\nInvalid input. Please enter a valid index." + Fore.RESET)
 
 
 def update_task():
