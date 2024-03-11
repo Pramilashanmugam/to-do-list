@@ -27,24 +27,26 @@ task_sheet = SHEET.worksheet('tasks')
 
 print(
     Fore.BLUE +
-    """\n▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▌
-▐  ███████████                 █████             ████   ███           █████    ▌
-▐ ░█░░░███░░░█                ░░███             ░░███  ░░░           ░░███     ▌
-▐ ░   ░███  ░   ██████      ███████   ██████     ░███  ████   █████  ███████   ▌
-▐     ░███     ███░░███    ███░░███  ███░░███    ░███ ░░███  ███░░  ░░░███░    ▌
-▐     ░███    ░███ ░███   ░███ ░███ ░███ ░███    ░███  ░███ ░░█████   ░███     ▌
-▐     ░███    ░███ ░███   ░███ ░███ ░███ ░███    ░███  ░███  ░░░░███  ░███ ███ ▌
-▐     █████   ░░██████    ░░████████░░██████     █████ █████ ██████   ░░█████  ▌
-▐    ░░░░░     ░░░░░░      ░░░░░░░░  ░░░░░░     ░░░░░ ░░░░░ ░░░░░░     ░░░░░   ▌
-▐▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▌""" + Fore.RESET)
+    """\n
+╔═══════════════════════════════════════════════════════════════╗
+║███████████            █████          ████  ███        █████   ║
+║█░░░███░░░█           ░░███           ░███ ░░░        ░░███    ║
+║   ░███  ░██████    ███████   ██████  ░███ ████  ████████████  ║
+║   ░███  ███░░███  ███░░███  ███░░███ ░███░░███ ███░░░░░███░   ║
+║   ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███░░█████ ░███    ║
+║   ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░███ ░░░░███░███ ███║
+║   █████░░██████  ░░████████░░██████  ████████████████ ░░█████ ║
+║  ░░░░░  ░░░░░░    ░░░░░░░░  ░░░░░░   ░░░░░░░░░░░░░░░   ░░░░░  ║
+╚═══════════════════════════════════════════════════════════════╝
+""" + Fore.RESET)
 print("\nWelcome to your To do list app!💡")
 print("\nThis app helps you to keep track on your day to day activities.\n")
 print("You can add, delete, view or modify your tasks in this app\n")
 
 
 def validate_date(date_str):
-    """ 
-    This function is to validate the date format entered by user is valid or not
+    """
+    Function validates date format entered by user is valid or not
     """
     try:
         datetime.strptime(date_str, '%d/%m/%Y')
@@ -55,38 +57,43 @@ def validate_date(date_str):
 
 def add_task():
     """
-    A function is to add task by the user with the date for completion,
-    I have used a loop to ensure the user enters the valid date in the format of DD/MM/YYYY
+    Function adds task with the date for completion,
+    A loop ensures the user enters the valid date in the format of DD/MM/YYYY
     """
 
     # Get the current date using library
     current_date = datetime.now().date()
 
-    # Asking user to enter the task. Validating for text length and ensure its not empty.
+    # User enters the task. Validates text length & ensures its not empty.
     while True:
         task_input = input(
-            Fore.LIGHTCYAN_EX + "Please add enter your task 🗒 (max 100 Characters): " + Fore.RESET)
+            Fore.LIGHTCYAN_EX +
+            "Please add enter your task 🗒 (max 100 Characters): "
+            + Fore.RESET)
         if not task_input:
             print("\nTask cannot be empty. Please enter a task")
         elif len(task_input) > 100:
-            print("\nTask cannot exceed 100 Characters. Please enter a shorter Task.")
+            print(Fore.LIGHTRED_EX + "\nTask cannot exceed 100 Characters.")
+            print("Please enter a shorter Task.\n" + Fore.RESET)
         else:
             break
     # Checking for valid date and loops until valid date is received
     while True:
         date = input(Fore.LIGHTCYAN_EX +
-                     "\nPlease enter the date 📅 for completion(dd/mm/yyyy): " + Fore.RESET)
+                     "\nPlease enter the date 📅 for completion(dd/mm/yyyy): " +
+                     Fore.RESET)
         # Validate date format
         if not validate_date(date):
-            print("\nInvalid date format. Please enter date 📅 in dd/mm/yyyy format.")
+            print(Fore.LIGHTRED_EX + "\nInvalid date format.")
+            print("Please enter valid date 📅 in dd/mm/yyyy" + Fore.RESET)
             continue
         # Convert the input date string to a datetime object
         deadline = datetime.strptime(date, '%d/%m/%Y').date()
 
         # Check if the deadline date is in the past
         if deadline < current_date:
-            print(
-                "\nDeadline date for completion cannot be in the past. Please enter a future date.")
+            print("\nDeadline date for completion cannot be in the past.")
+            print("Please enter a future date.")
         else:
             break
 
@@ -122,8 +129,9 @@ def delete_task():
     tasks = task_sheet.get_all_values()
     list_tasks()
     try:
-        user_input_delete = int(input(Fore.LIGHTGREEN_EX +
-                                      "\nEnter the index no to delete the task: " + Fore.RESET))
+        user_input_delete = int(input(
+            Fore.LIGHTGREEN_EX +
+            "\nEnter the index no to delete the task: " + Fore.RESET))
         task_to_delete = user_input_delete + 1
         if task_to_delete > 1 and task_to_delete <= len(tasks):
             # Delete the corresponding row from the worksheet
@@ -132,9 +140,11 @@ def delete_task():
             print(Fore.RED + f"\nTask no '{user_input_delete}' "
                   f"has been successfully deleted" + Fore.RESET)
         else:
-            print(Fore.LIGHTRED_EX + f"\nTask not found: '{user_input_delete}' " + Fore.RESET)
+            print(Fore.LIGHTRED_EX +
+                  f"\nTask not found: '{user_input_delete}' " + Fore.RESET)
     except ValueError:
-        print(Fore.LIGHTRED_EX + "\nInvalid input. Please enter a valid index." + Fore.RESET)
+        print(Fore.LIGHTRED_EX +
+              "\nInvalid input. Please enter a valid index." + Fore.RESET)
 
 
 def update_task():
@@ -146,7 +156,8 @@ def update_task():
     list_tasks()
     try:
         task_to_update = int(input(
-            Fore.LIGHTGREEN_EX + "\nEnter the index no of the task to update: " + Fore.RESET))
+            Fore.LIGHTGREEN_EX +
+            "\nEnter the index no of the task to update: " + Fore.RESET))
 
         if task_to_update >= 1 and task_to_update < len(tasks):
             # Retrieve task information
@@ -155,14 +166,19 @@ def update_task():
                   f" with Deadline: {task_to_modify[1]}")
             # Prompt user for updated task details
             updated_task = input(
-                Fore.LIGHTCYAN_EX + "\nEnter the updated task description: " + Fore.RESET)
+                Fore.LIGHTCYAN_EX +
+                "\nEnter the updated task description: " + Fore.RESET)
             updated_deadline = input(
-                Fore.LIGHTCYAN_EX + "\nEnter the updated deadline (dd/mm/yyyy): " + Fore.RESET)
+                Fore.LIGHTCYAN_EX +
+                "\nEnter the updated deadline (dd/mm/yyyy): " + Fore.RESET)
             while not validate_date(updated_deadline):
-                print(Fore.LIGHTRED_EX +
-                      "\nInvalid date format. Please enter date in dd/mm/yyyy format." + Fore.RESET)
-                updated_deadline = input(Fore.LIGHTCYAN_EX +
-                                         "Enter the updated deadline (dd/mm/yyyy): " + Fore.RESET)
+                print(
+                    Fore.LIGHTRED_EX +
+                    "\nInvalid date format. Please enter date in dd/mm/yyyy."
+                    + Fore.RESET)
+                updated_deadline = input(
+                    Fore.LIGHTCYAN_EX +
+                    "Enter the updated deadline (dd/mm/yyyy): " + Fore.RESET)
                 # Update the corresponding row in the worksheet
             task_sheet.update([[updated_task, updated_deadline]],
                               f'{task_to_update+1}:{task_to_update+1}')
@@ -179,11 +195,12 @@ def update_task():
 def main():
     """
     This function has the options to be chosen by the user.
-    Depending on the input received, the program will call the respective function.
+    Based on input received, respective function will be called.
     """
     while True:
         print(Fore.LIGHTGREEN_EX + "\nPlease choose an option from below: ")
-        print("--------------------------------------------------------------" + Fore.RESET)
+        print("--------------------------------------------------------------"
+              + Fore.RESET)
         print("1. Add Task")
         print("2. View Tasks")
         print("3. Delete Task")
@@ -191,13 +208,15 @@ def main():
         print("5. Exit")
         try:
             choice = int(
-                input(Fore.LIGHTGREEN_EX + "\nEnter your choice: " + Fore.RESET))
+                input(Fore.LIGHTGREEN_EX + "\nEnter your choice: "
+                      + Fore.RESET))
         except ValueError:
-            # if any value other than integer received then error message reflects
+            # if value other than integer received then error message reflects
             print("Invalid input. Please enter a valid number.")
             continue
         print(Fore.LIGHTGREEN_EX +
-              "--------------------------------------------------------------" + Fore.RESET)
+              "--------------------------------------------------------------"
+              + Fore.RESET)
         if choice == 1:
             add_task()
         elif choice == 2:
@@ -212,7 +231,7 @@ def main():
             print("Please enter the valid number")
     print("\nGood Bye 👋 👋")
     print(Fore.LIGHTBLUE_EX +
-          "\nTo start the app again, Press the Run Program button")
+          "\nTo start the app again, Press the Run Program button\n")
 
 
 main()
