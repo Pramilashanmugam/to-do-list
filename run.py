@@ -240,7 +240,7 @@ def main():
             print("Please enter the valid number")
     print("\nGood Bye 👋 👋")
     print(Fore.LIGHTBLUE_EX +
-          "\nTo start the app again, Press the Run Program button\n")
+          "\nTo start the app again, Press the Run Program button above\n")
 
 
 main()
