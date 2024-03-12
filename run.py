@@ -103,8 +103,9 @@ def add_task():
 
         # Check if the deadline date is in the past
         if deadline < current_date:
-            print("\nDeadline date for completion cannot be in the past.")
-            print("Please enter a future date.")
+            print(Fore.LIGHTRED_EX +
+                  "\nDeadline date for completion cannot be in the past.")
+            print("Please enter a future date." + Fore.RESET)
         else:
             break
 
@@ -221,7 +222,8 @@ def main():
                       + Fore.RESET))
         except ValueError:
             # if value other than integer received then error message reflects
-            print("Invalid input. Please enter a valid number.")
+            print(Fore.LIGHTRED_EX +
+                  "Invalid input. Please enter a valid number." + Fore.RESET)
             continue
         print(Fore.LIGHTGREEN_EX +
               "--------------------------------------------------------------"
@@ -237,7 +239,8 @@ def main():
         elif choice == 5:
             break
         else:
-            print("Please enter the valid number")
+            print(Fore.LIGHTRED_EX +
+                  "Please enter the valid number" + Fore.RESET)
     print("\nGood Bye 👋 👋")
     print(Fore.LIGHTBLUE_EX +
           "\nTo start the app again, Press the Run Program button above\n")
