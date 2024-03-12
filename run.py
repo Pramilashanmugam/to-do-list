@@ -44,9 +44,30 @@ print("\nThis app helps you to keep track on your day to day activities.\n")
 print("You can add, delete, view or modify your tasks in this app\n")
 
 
+def validate_task_input():
+    """
+    Function to validate the task input length and emptiness
+    this function is called in add and update function
+    """
+    while True:
+        task_input = input(
+            Fore.LIGHTCYAN_EX +
+            "Please add enter your task 🗒 (max 100 Characters): "
+            + Fore.RESET)
+        if not task_input:
+            print(Fore.LIGHTRED_EX +
+                  "\nTask cannot be empty. Please enter a task" + Fore.RESET)
+        elif len(task_input) > 100:
+            print(Fore.LIGHTRED_EX + "\nTask cannot exceed 100 Characters.")
+            print("Please enter a shorter Task.\n" + Fore.RESET)
+        else:
+            return task_input
+
+
 def validate_date(date_str):
     """
     Function validates date format entered by user is valid or not
+    this function is called in add and update function
     """
     try:
         datetime.strptime(date_str, '%d/%m/%Y')
@@ -64,19 +85,9 @@ def add_task():
     # Get the current date using library
     current_date = datetime.now().date()
 
-    # User enters the task. Validates text length & ensures its not empty.
-    while True:
-        task_input = input(
-            Fore.LIGHTCYAN_EX +
-            "Please add enter your task 🗒 (max 100 Characters): "
-            + Fore.RESET)
-        if not task_input:
-            print("\nTask cannot be empty. Please enter a task")
-        elif len(task_input) > 100:
-            print(Fore.LIGHTRED_EX + "\nTask cannot exceed 100 Characters.")
-            print("Please enter a shorter Task.\n" + Fore.RESET)
-        else:
-            break
+    # Validate task input
+    task_input = validate_task_input()
+
     # Checking for valid date and loops until valid date is received
     while True:
         date = input(Fore.LIGHTCYAN_EX +
@@ -165,9 +176,7 @@ def update_task():
             print(f"\nCurrent Task: {task_to_modify[0]}"
                   f" with Deadline: {task_to_modify[1]}")
             # Prompt user for updated task details
-            updated_task = input(
-                Fore.LIGHTCYAN_EX +
-                "\nEnter the updated task description: " + Fore.RESET)
+            updated_task = validate_task_input()
             updated_deadline = input(
                 Fore.LIGHTCYAN_EX +
                 "\nEnter the updated deadline (dd/mm/yyyy): " + Fore.RESET)
