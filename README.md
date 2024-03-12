@@ -100,14 +100,57 @@ Error messages should be displayed clearly to guide me in correcting any mistake
 
 ## Deployment:
 
-### Version Control:
+### Heroku Deployment
+
+This application was created using the [Code Institute Python Essentials Template](https://github.com/Code-Institute-Org/p3-template). This template creates a webpage based template that can run python code. For the application to run using the template, the follow changes need to be made to the python code.
+
+1. The newline char(\n) must be added at the end of the text inside all occurrences of the input method, e.g. data=input("text\n")
+2. The requirements.txt must be populated with a list of dependencies that the project needs to run. This can be done using the terminal command pip3 freeze > requirements.txt
+
+This application was deployed on Heroku using the following steps,
+
+1. Create a Heroku account and log in.
+2. Select create new app from the dashboard.
+3. Enter a name for the app, select a region and press create app.
+4. From the app homepage select settings.
+5. Select reveal config vars.
+6. Add a config var with a key and a value.
+7. Optional - If using google sheets create a config var with a key of CREDS. For the value, paste in the credentials for the google sheet used by the app. For this project a CREDS variable was created using the contents of the creds.json file.
+8. From settings select add build pack, select python from the pop up window and press add buildpack.
+9. From settings select add build pack, select nodejs from the pop up window and press add buildpack.
+10. Select the deploy section from the app homepage.
+11. Select Github as the deployment method and connect to Github.
+12. In the search bar, enter the name of the repo used for the app and click search.
+13. Press connect to link the Heroku app to the repo.
+14. Deploy using automatic or manual deployment options at the bottom of the deploy section.
+
+### Local Deployment:
 * The site is created using the Gitpod IDE and then added and commited to git. Later pushed to github.
 * The following git commands were used throughout development to push code to the remote repo:
   * git add <file>/.- This command was used to add the file(s) to the staging area before they are committed.
   * git commit -m “commit message” - This command was used to commit changes to the local repository queue ready for the final step.
   * git push - This command was used to push all committed code to the remote repository on github.
 
-  ### Deployment to Heroku:
-  
+### How to Fork
+
+To fork this repository,
+
+1. Log into or signup at [Github](https://github.com).
+2. Select the repository for this app.
+3. Click the fork button (upper right).
+
+### How to Clone
+
+To clone this repository,
+
+1. Log into or signup at [Github](https://github.com).
+2. Select the repository for this app
+3. Click the green code button (upper right).
+4. Copy the URL using the copy button.
+5. Open the terminal in your editor (or of your choosing) and move to the directory which you want to clone to.
+6. Type git clone and paste the repository link, then press enter.
+
+
+
 
 
