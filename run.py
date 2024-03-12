@@ -1,5 +1,12 @@
 """
-importing essential libraries for this project
+Imports necessary libraries for the To-Do List application.
+
+This section imports the following libraries:
+- `datetime` from the standard Python library for date and time manipulation.
+- `Fore` from the Colorama library for terminal color formatting.
+- `tabulate` from the Tabulate library for displaying data in tabular format.
+- `gspread` for interacting with Google Sheets.
+- `Credentials` from the Google OAuth2 library for handling authentication.
 """
 from datetime import datetime
 from colorama import Fore
@@ -46,8 +53,13 @@ print("You can add, delete, view or modify your tasks in this app\n")
 
 def validate_task_input():
     """
-    Function to validate the task input length and emptiness
-    this function is called in add and update function
+    Validates the task input provided by the user.
+
+    This function prompts the user to enter a task description and ensures
+    that it does not exceed 100 characters.
+    If the task description is empty or exceeds 100 characters, appropriate
+    error messages are displayed, and the user is prompted again until a valid
+    task description is provided.
     """
     while True:
         task_input = input(
@@ -66,8 +78,12 @@ def validate_task_input():
 
 def validate_date(date_str):
     """
-    Function validates date format entered by user is valid or not
-    this function is called in add and update function
+    Validates the format of a date string.
+
+    This function attempts to parse the input date string in the format of
+    DD/MM/YYYY using the `datetime.strptime` method. If the parsing is
+    successful, it returns True, indicating that the date format is valid.
+    If the parsing fails, indicating an invalid date format, it returns False.
     """
     try:
         datetime.strptime(date_str, '%d/%m/%Y')
@@ -78,8 +94,18 @@ def validate_date(date_str):
 
 def add_task():
     """
-    Function adds task with the date for completion,
-    A loop ensures the user enters the valid date in the format of DD/MM/YYYY
+    Adds a task to the task list.
+
+    This function prompts the user to enter the task description and
+    ensures that it does not exceed 100 characters.
+    It then prompts the user to enter the deadline for the task in the
+    format of DD/MM/YYYY.
+    The function validates the date format and ensures that the deadline
+    is not in the past.
+    If the task and date are valid, the task is added to the list with
+    its deadline.
+    If the date is invalid or in the past, or if the task description exceeds
+    100 characters, appropriate error messages are displayed.
     """
 
     # Get the current date using library
@@ -117,7 +143,12 @@ def add_task():
 
 def list_tasks():
     """
-    list done the tasks in the spreadsheet
+    Displays the list of tasks stored in the spreadsheet.
+
+    Retrieves all tasks from the spreadsheet and checks if any tasks exist.
+    If no tasks are found, a message indicating no tasks are present
+    is displayed. If tasks are found, they are displayed in a tabulated
+    format with index, task description, and deadline.
     """
     tasks = task_sheet.get_all_values()
     if not tasks[1:]:
@@ -135,7 +166,18 @@ def list_tasks():
 
 def delete_task():
     """
-    A function to delete a task
+    Deletes a task from the task list.
+
+    This function prompts the user to enter the index number of the task
+    they want to delete. It then checks if the entered index is valid
+    and corresponds to an existing task.
+    If the task exists, it is removed from the task list.
+    If the index is invalid or the task doesn't exist, an appropriate
+    error message is displayed.
+
+    Raises:
+        ValueError: If the user enters a non-integer value or an index that
+        is out of range.
     """
     # Fetch tasks from the worksheet
     tasks = task_sheet.get_all_values()
@@ -161,7 +203,19 @@ def delete_task():
 
 def update_task():
     """
-    A function to update an existing task
+    Updates an existing task in the To-Do List.
+
+    This function allows the user to update an existing task by
+    providing the index number of the task to be updated.
+    It retrieves the current task details, including the task description
+    and deadline, displays them to the user, and prompts for updated
+    information. After validating the updated task details,
+    including the task description and deadline format, it updates
+    the corresponding row in the worksheet with the new information.
+
+    Raises:
+        ValueError: If the index provided by the user is invalid or not
+        a number.
     """
     # Fetch tasks from the worksheet
     tasks = task_sheet.get_all_values()
@@ -204,8 +258,19 @@ def update_task():
 
 def main():
     """
-    This function has the options to be chosen by the user.
-    Based on input received, respective function will be called.
+    Main function for the To-Do List application.
+
+    This func presents a menu of options for the user
+    to choose from, including:
+    1. Add Task
+    2. View Tasks
+    3. Delete Task
+    4. Edit Task
+    5. Exit
+
+    The user is prompted to enter their choice,
+    and based on the input received,
+    the corresponding function is called to perform the selected action.
     """
     while True:
         print(Fore.LIGHTGREEN_EX + "\nPlease choose an option from below: ")
