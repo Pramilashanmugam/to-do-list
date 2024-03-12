@@ -52,7 +52,7 @@ def validate_task_input():
     while True:
         task_input = input(
             Fore.LIGHTCYAN_EX +
-            "Please add enter your task 🗒 (max 100 Characters): "
+            "\nPlease add enter your task 🗒 (max 100 Characters): "
             + Fore.RESET)
         if not task_input:
             print(Fore.LIGHTRED_EX +
