@@ -15,6 +15,7 @@ from tabulate import tabulate
 import gspread
 from google.oauth2.service_account import Credentials
 
+# Specifies what part of the google account the user has access to
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -31,7 +32,7 @@ SHEET = GSPREAD_CLIENT.open('todolist')
 # Select the tasks worksheet
 task_sheet = SHEET.worksheet('tasks')
 
-
+# Used ASCII to display at the start of the terminal
 print(
     Fore.BLUE +
     """\n

@@ -1,6 +1,8 @@
 # To do List app 
 ## Welcome to my [To do list app](https://my-to-do-list-a8066c712807.herokuapp.com/)
 
+![Screenshot 2024-03-13 10 59 48 AM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/0f664087-5cc6-453e-a800-710368ccf4c2)
+
 
 ## Introduction:
 The purpose of developing this app is to keep track of our current and future appointments/plans. It is very important for each and everyone of us to stay organized and manage our day to day tasks effectively. I believe this app would help us achieve the same.
@@ -87,7 +89,19 @@ Error messages should be displayed clearly to guide me in correcting any mistake
 - `Fore` from the Colorama library for terminal color formatting.
 - `tabulate` from the Tabulate library for displaying data in tabular format.
 - `gspread` for interacting with Google Sheets.
+- `Coloroma` for text colors
 - `Credentials` from the Google OAuth2 library for handling authentication.
+
+### Tools:
+
+- [Lucid Chart](https://www.lucidchart.com/) used to create app flowchart.
+- [Google](https://www.google.ie/), [Youtube](https://www.youtube.com/) and [WW3schools](https://www.w3schools.com) used for references to help and solve issues when needed.
+- Emoji used to make it more attractive on terminal
+- [Code institutes Pep8 linter](https://pep8ci.herokuapp.com/) used to ensure the pep8 style guidelines are followed.
+- [Heroku](https://heroku.com/) is used for deployment.
+
+
+
 
 ## Features Planned to Implement in Future:
 
@@ -95,7 +109,7 @@ Error messages should be displayed clearly to guide me in correcting any mistake
 
 ## Testing:
 
-### [Please click on this link to view the Testing performed](TESTING.md)
+### [Please click this link to view the testing file  ](TESTING.md)
 
 ## PageSpeedInsight Result:
 
