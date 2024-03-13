@@ -71,18 +71,107 @@ Error messages should be displayed clearly to guide me in correcting any mistake
 
 ### Flowchart:
 
-![Screenshot 2024-03-04 11 55 50 AM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/e7e5d157-0c49-4697-9639-32a4d9576201)
+![Screenshot 2024-03-13 5 33 11 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/0b463fc7-8f3e-4745-a954-9a8927ec19bb)
 
 ## Existing Features:
 
 ### Main features of this app:
 
-* `Adding tasks`: Users can add new tasks with a deadline.
-* `Viewing tasks`: Users can view their existing tasks in a list format.
-* `Deleting tasks`: Users can delete tasks they no longer need.
-* `Updating tasks`: Users can edit existing tasks, by modifying the task description and deadline.
-* `Validation`: It validates user inputs to ensure task descriptions are not empty and the date entered must be in current and are in the correct format dd/mm/yyyy. It validates the input 
-Error messages should be displayed clearly to guide me in correcting any mistakes
+* `Choose an option`: Choose between 5 given options to perform a particular function.
+
+  ![Screenshot 2024-03-13 12 09 43 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/582bdfe5-b156-441c-9909-87a6b284b2b5)
+
+### `Adding tasks`: User opt for option 1 to add new tasks with a deadline.
+
+  ![Screenshot 2024-03-13 12 06 54 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/7e16667c-bcbc-4872-87ee-0d5dbaf6e23f)
+
+Task within 100 Characters accepted and if exceeds more than 100 characters or character is 0 then a error message displays for user to enter a short message and this continues until the condition is true.
+
+![Screenshot 2024-03-13 12 19 36 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/d857757f-f655-417a-b2d0-3450377eeab7)
+
+This gets added in Google spread sheet
+
+![Screenshot 2024-03-13 12 22 41 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/d70c2e6f-7dee-4fc3-aa22-42859e53816c)
+
+If the character was more than 100 character the following error message will display
+
+![Screenshot 2024-03-13 12 25 02 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/9975b1b7-9105-4b0c-adc2-182c59406d8a)
+
+If the task is empty the following error message will display
+
+![Screenshot 2024-03-13 12 26 02 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/7efb940a-c1cd-4fef-9528-bf1a2a8eff23)
+
+Only current date in the format of dd/mm/yyyy is accepted if the date is past or other special characters and error message will display.
+
+* Current date
+
+  ![Screenshot 2024-03-13 12 28 34 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/f236cf4f-fdd9-4ea7-83bd-1d1472456b2a)
+
+* Invalid date
+![Screenshot 2024-03-13 12 32 27 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/66eb4b18-6635-43ab-bbaa-16aa203ab46f)
+
+* Past date
+![Screenshot 2024-03-13 12 33 20 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/0199545b-5729-4482-ae52-423eea065655)
+
+### `Viewing tasks`: Users can view their existing tasks in a list format.
+
+![Screenshot 2024-03-13 12 35 10 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/da4eeb92-a129-4897-a699-d8e5e383072c)
+
+### `Deleting tasks`: Users can delete tasks they no longer need.
+
+![Screenshot 2024-03-13 12 36 11 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/d92e4349-6ec8-4fc8-9f54-0fcb6ebb6433)
+
+Choose the task which needs to be deleted using index number.
+
+![Screenshot 2024-03-13 12 37 36 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/d65676c6-c2c4-428e-9054-a02a19d6937c) 
+
+To confirm the task is no more use view task option
+
+![Screenshot 2024-03-13 12 39 05 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/d6b11560-d2d3-45a1-8cb7-a9bc0c98c34b)
+
+If the index number entered is not available in the data, an error message will display
+
+![Screenshot 2024-03-13 12 41 11 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/fb131767-ecef-4047-bb83-44897d730480)
+
+### `Updating tasks`: Users can edit existing tasks, by modifying the task description and deadline.
+
+![Screenshot 2024-03-13 12 42 43 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/39b1d231-e015-4e74-bbff-337a5470889a)
+
+Displays the list of task, once index of task to modified inputed, it displays the data to be modified and then ask to enter new task and deadline
+
+If index was an invalid input
+
+![Screenshot 2024-03-13 5 46 33 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/c22d7bc9-c6b1-4988-bdea-85a57faef149)
+
+New task is accepted only when the length of the character doesnot exceeds 100 character
+
+![Screenshot 2024-03-13 5 35 26 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/302203bb-90b4-4142-83d3-71db82902f88)
+
+Once valid data entered task will be modified
+
+![Screenshot 2024-03-13 5 38 22 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/ebe71b99-4d07-42f6-b9be-a4b865afdfc0)
+
+on clicking view task you get a confirmation on updated data
+
+![Screenshot 2024-03-13 5 39 45 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/ffb11a38-6dcd-4206-ad99-7315a79764e7)
+
+If invalid data like text longer than 100 character and not a current date or wrong index number - same as Add function the error message will display.
+
+![Screenshot 2024-03-13 5 47 56 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/2afbc362-c115-4b00-bd70-90033390409b)
+
+If the task is empty the following error message will display
+
+![Screenshot 2024-03-13 12 26 02 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/7efb940a-c1cd-4fef-9528-bf1a2a8eff23)
+
+* Invalid date
+![Screenshot 2024-03-13 12 32 27 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/66eb4b18-6635-43ab-bbaa-16aa203ab46f)
+
+* Past date
+![Screenshot 2024-03-13 12 33 20 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/0199545b-5729-4482-ae52-423eea065655)
+
+### `Validation`: It validates user inputs to ensure task descriptions are not empty and the date entered must be in current and are in the correct format dd/mm/yyyy. It validates the input 
+
+I have used try and exception in most of the function to catch the invalid datas and simultaneouly displays the error messages should be displayed clearly to guide me in correcting any mistakes
 
 ### Libraries used:
 - `datetime` from the standard Python library for date and time manipulation.
@@ -112,6 +201,8 @@ Error messages should be displayed clearly to guide me in correcting any mistake
 ### [Please click this link to view the testing file  ](TESTING.md)
 
 ## PageSpeedInsight Result:
+
+![Screenshot 2024-03-13 5 53 40 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/14017b1d-35ee-48b6-bdf2-0fefe71acaa6)
 
 ## Deployment:
 
