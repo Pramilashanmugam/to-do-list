@@ -12,7 +12,7 @@ The purpose of developing this app is to keep track of our current and future ap
 ## Technologies:
 
  * Python
-   * This app is fully developed using Python.
+   * This app is developed using Python.
  * Visual Studio Code
    * This website was developed using Gitpod IDE and also used the code institute template.
  * Github
@@ -69,6 +69,12 @@ Each task should display its description and deadline.
   * The app should validate user inputs to ensure task descriptions are not empty and date are in the correct format.
 Error messages should be displayed clearly to guide me in correcting any mistakes.
 
+### Design:
+
+* Due to the fact that this application is terminal based and also relies on code institute template. I have not made any addition to design and sticking to the default template provided by Code institute.
+* However i have used emoji's and text colours in the output to give a better visual experience.
+
+
 ### Flowchart:
 
 ![Screenshot 2024-03-13 5 33 11 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/0b463fc7-8f3e-4745-a954-9a8927ec19bb)
@@ -77,7 +83,7 @@ Error messages should be displayed clearly to guide me in correcting any mistake
 
 ### Main features of this app:
 
-* `Choose an option`: Choose between 5 given options to perform a particular function.
+### `Choose an option`: Choose between 5 given options to perform a particular function.
 
   ![Screenshot 2024-03-13 12 09 43 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/582bdfe5-b156-441c-9909-87a6b284b2b5)
 
@@ -89,7 +95,7 @@ Task within 100 Characters accepted and if exceeds more than 100 characters or c
 
 ![Screenshot 2024-03-13 12 19 36 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/d857757f-f655-417a-b2d0-3450377eeab7)
 
-This gets added in Google spread sheet
+The data gets added and stored in Google spread sheet.
 
 ![Screenshot 2024-03-13 12 22 41 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/d70c2e6f-7dee-4fc3-aa22-42859e53816c)
 
@@ -169,7 +175,16 @@ If the task is empty the following error message will display
 * Past date
 ![Screenshot 2024-03-13 12 33 20 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/0199545b-5729-4482-ae52-423eea065655)
 
-### `Validation`: It validates user inputs to ensure task descriptions are not empty and the date entered must be in current and are in the correct format dd/mm/yyyy. It validates the input 
+### Exit function:
+on choosing exit option, the program end its functionality and displays a bye message as well as instruction to restart the application again.
+
+![Screenshot 2024-03-13 9 55 48 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/7be74f4f-58be-4656-a24a-f642fa02ae0e)
+
+### `Validation`: 
+
+User inputs are validated to ensure task descriptions are not empty and the date entered must be in current and are in the correct format dd/mm/yyyy. It also validates user input on the options to be entered is integer and not any other data type.
+
+Screenshots for validation are already shown in every functions
 
 I have used try and exception in most of the function to catch the invalid datas and simultaneouly displays the error messages should be displayed clearly to guide me in correcting any mistakes
 
@@ -189,12 +204,11 @@ I have used try and exception in most of the function to catch the invalid datas
 - [Code institutes Pep8 linter](https://pep8ci.herokuapp.com/) used to ensure the pep8 style guidelines are followed.
 - [Heroku](https://heroku.com/) is used for deployment.
 
-
-
-
 ## Features Planned to Implement in Future:
 
-* From single user need to extend it to multiple user.
+* From single user app to be extend to multiple users.
+* The task to get updated with the time.
+* The task to get linked to calendar.
 
 ## Testing:
 
@@ -256,6 +270,19 @@ To clone this repository,
 5. Open the terminal in your editor (or of your choosing) and move to the directory which you want to clone to.
 6. Type git clone and paste the repository link, then press enter.
 
+## Credits
+
+I would like to give credit to the study materials i used in Google and youtubes for accomplishing this project
+
+* [Shaun Halverson Youtube channel](https://www.youtube.com/watch?v=aEIHZDv_23U)
+* [W3schools](https://www.w3schools.com/python/default.asp)
+* [Error makes clever academy, a Youtube python tutorial channel](https://www.youtube.com/watch?v=m67-bOpOoPU&t=1679s)
+* Love Sandwich Walkthrough project. I have used the google sheet for my datas to get stored as it was guided in the walkthrough tutorial.
+
+## Acknowledgement:
+
+* I would like to acknowledge my mentor `Rory Patrick` his continuous support and guidance during this project.
+* Also members from Slack team, who answered my questions when support was needed.
 
 
 

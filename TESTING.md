@@ -1,14 +1,14 @@
 # To do List Testing
 
-Testing was started from the development phase of the application.
+Testing was started from the development phase of the application. 
 
-I used the [Code institutes Pep8 linter](https://pep8ci.herokuapp.com/) to ensure the python code has no error as per Pep8 style guidelines. The results of these can be seen below.
+I used the [Code institutes Pep8 linter](https://pep8ci.herokuapp.com/) to ensure the python code meets all the required criteria as per Pep8 style guidelines. The results of these can be seen below.
 
 ## run.py validation
 
 ![Screenshot 2024-03-13 8 46 19 AM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/9b890be0-2f7d-41ca-9e4c-34320e893df3)
 
-HTML and CSS Validation not done as this project was done only using Python
+HTML and CSS Validation not done as this project was solely created using Python with code institute template.
 
 ## Manual Testing
 
@@ -96,6 +96,22 @@ HTML and CSS Validation not done as this project was done only using Python
 | if invalid data received                                   | Text should reflect in lightred color         | as expected it reflects in lightred color    |
 | main function                                              | first 3 print statements in the main function | Text should reflect in lightred color        | as expected it reflects in lightred color   |
 | last print statement instructing user to press run program | Text should reflect in Blue                   | as expected it reflects in Blue              |
+
+## Bugs and Fix
+
+| Bugs/Errors Found                                                                                                                    | Fix                                                                                                                                                                                                                              | Current status |
+| ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| Task input in add and update function accepted unlimited characters                                                                  | A Task is limited to a maximum of 100 characters                                                                                                                                                                                 | Fixed          |
+| Date input in add and update function accepted all characters and in any format                                                      | used python library to ensure the correct format of date in dd/mm/yyyy has been implemented                                                                                                                                      | Fixed          |
+| Past dates were also accepted                                                                                                        | Using conditional statement only current and future dates are accepted and throw an error message for invalid date implemented                                                                                                   | Fixed          |
+| using index num when delete function was called the previous row in google sheet was deleted including the index                     | Before the conditional statement in Delete function incremented the user input as +1 and changed the conditional statement that on >1 should be deleted. This solved the issue                                                   | Fixed          |
+| Inititally the view of tasks had problem in displaying the task in numerical order when a task was manipulated like delete or update | Used enumerate function to solve this issue and now the tasks gets displayed in numerical order                                                                                                                                  | Fixed          |
+| Inititally when the view of task was displayed it included the index row from google sheet, though it was not the actual task        | in enumerate function changed the start value to 1 and that resolved the problem                                                                                                                                                 | Fixed          |
+| In the update task, the modified task was not updated in the correct row in google sheet, it was getting updated in the previous row | This was fixed by incrementing the input value                                                                                                                                                                                   | Fixed          |
+| pylint showed lot ot whitespaces and lengthy line issues                                                                             | deleted the whitespaces and fixed the lengthy line issue by moving to nextline                                                                                                                                                   | Fixed          |
+| The choice to choose an option accepted values other than required                                                                   | Fixed using try and exception error handling                                                                                                                                                                                     | Fixed          |
+| After deployment the application did not run on terminal.                                                                            | As i did not check the code on the code institute pylinter before deployment, due to white spaces and lengthy lines the program did not run as expected but same rectified once all the trailing error in pylinter was corrected | Fixed          |
+
 
 
 [Return to README.md](README.md)
