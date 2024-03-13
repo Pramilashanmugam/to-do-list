@@ -273,7 +273,8 @@ def main():
     the corresponding function is called to perform the selected action.
     """
     while True:
-        print(Fore.LIGHTGREEN_EX + "\nPlease choose an option from below: ")
+        print(Fore.LIGHTGREEN_EX +
+              "\nPlease choose an option from below(enter only number ex:1): ")
         print("--------------------------------------------------------------"
               + Fore.RESET)
         print("1. Add Task")

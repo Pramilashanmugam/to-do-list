@@ -5,13 +5,6 @@
 ## Introduction:
 The purpose of developing this app is to keep track of our current and future appointments/plans. It is very important for each and everyone of us to stay organized and manage our day to day tasks effectively. I believe this app would help us achieve the same.
 
-## Main features of this app:
-
-* Adding tasks: Users can add new tasks with a deadline.
-* Viewing tasks: Users can view their existing tasks in a list format.
-* Deleting tasks: Users can delete tasks they no longer need.
-* Updating tasks: Users can edit existing tasks, by modifying the task description and deadline.
-
 # Features:
 
 ## Technologies:
@@ -71,7 +64,7 @@ Each task should display its description and deadline.
 
 * Validation:
 
-  * The app should validate user inputs to ensure task descriptions are not empty and deadlines are in the correct format.
+  * The app should validate user inputs to ensure task descriptions are not empty and date are in the correct format.
 Error messages should be displayed clearly to guide me in correcting any mistakes.
 
 ### Flowchart:
@@ -80,13 +73,21 @@ Error messages should be displayed clearly to guide me in correcting any mistake
 
 ## Existing Features:
 
+### Main features of this app:
+
+* `Adding tasks`: Users can add new tasks with a deadline.
+* `Viewing tasks`: Users can view their existing tasks in a list format.
+* `Deleting tasks`: Users can delete tasks they no longer need.
+* `Updating tasks`: Users can edit existing tasks, by modifying the task description and deadline.
+* `Validation`: It validates user inputs to ensure task descriptions are not empty and the date entered must be in current and are in the correct format dd/mm/yyyy. It validates the input 
+Error messages should be displayed clearly to guide me in correcting any mistakes
+
 ### Libraries used:
 - `datetime` from the standard Python library for date and time manipulation.
 - `Fore` from the Colorama library for terminal color formatting.
 - `tabulate` from the Tabulate library for displaying data in tabular format.
 - `gspread` for interacting with Google Sheets.
 - `Credentials` from the Google OAuth2 library for handling authentication.
-
 
 ## Features Planned to Implement in Future:
 
