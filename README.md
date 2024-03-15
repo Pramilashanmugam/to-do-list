@@ -25,7 +25,8 @@ The purpose of developing this app is to keep track of our current and future ap
 ## UX Design
 
 ### User Story:
-As a busy Home maker, mother and a student, I want to use a to-do list app to organize my tasks and stay on top of my daily activities. 
+
+As a multitasking homemaker, professional, parent, or student, I want a to-do list app that efficiently organizes tasks and manages daily responsibilities so that I can stay on top of my workload and accomplish my goals effectively. 
 
 #### As an User:
 * I want the app to add the task with a deadline.
