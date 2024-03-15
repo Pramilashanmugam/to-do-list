@@ -273,9 +273,9 @@ To clone this repository,
 
 ## Credits
 
-I would like to give credit to the study materials i used in Google and youtubes for accomplishing this project
+I would like to give credit to the study materials i used for my references from Google and youtubes for accomplishing this project
 
-* [Shaun Halverson Youtube channel](https://www.youtube.com/watch?v=aEIHZDv_23U)
+* [Shaun Halverson Youtube channel](https://www.youtube.com/watch?v=aEIHZDv_23U) 
 * [W3schools](https://www.w3schools.com/python/default.asp)
 * [Error makes clever academy, a Youtube python tutorial channel](https://www.youtube.com/watch?v=m67-bOpOoPU&t=1679s)
 * Love Sandwich Walkthrough project. I have used the google sheet for my datas to get stored as it was guided in the walkthrough tutorial.
