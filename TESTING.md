@@ -99,6 +99,8 @@ HTML and CSS Validation not done as this project was solely created using Python
 
 ## Bugs and Fix
 
+I have invested a lot of time on testing to find all the possible bugs and have also debugged them. To my knowledge there are no known bugs in the app. As mentioned in `Readme Features` input task accepts empty task, this was done purposefully. 
+
 | Bugs/Errors Found                                                                                                                    | Fix                                                                                                                                                                                                                              | Current status |
 | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | Task input in add and update function accepted unlimited characters                                                                  | A Task is limited to a maximum of 100 characters                                                                                                                                                                                 | Fixed          |
