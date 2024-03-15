@@ -100,6 +100,10 @@ The data gets added and stored in Google spread sheet.
 
 ![Screenshot 2024-03-13 12 22 41 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/d70c2e6f-7dee-4fc3-aa22-42859e53816c)
 
+The task input accepts empty task but not empty date as shown in the screenshot below. This feature is purposely kept so that when needed, user can use update task to update it later.
+
+![Screenshot 2024-03-15 9 07 51 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/26e650f8-1674-439d-9a47-a1de86d726fa)
+
 If the character was more than 100 character the following error message will display
 
 ![Screenshot 2024-03-13 12 25 02 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/9975b1b7-9105-4b0c-adc2-182c59406d8a)
@@ -185,9 +189,15 @@ on choosing exit option, the program end its functionality and displays a bye me
 
 User inputs are validated to ensure task descriptions are not empty and the date entered must be in current and are in the correct format dd/mm/yyyy. It also validates user input on the options to be entered is integer and not any other data type.
 
-Screenshots for validation are already shown in every functions
+Here is the validation code for task input
 
-I have used try and exception in most of the function to catch the invalid datas and simultaneouly displays the error messages should be displayed clearly to guide me in correcting any mistakes
+![Screenshot 2024-03-15 9 13 14 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/9a7f540e-4ce6-4471-a802-4c2b601f536d)
+
+Here is the validation code for date
+
+![Screenshot 2024-03-15 9 14 55 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/9bb46d4f-4454-4d17-ba41-c0663d479505)
+
+I have used try and exception in most of the function where i anticipate error may occur, such as when converting user input to integers or when parsing date strings.
 
 ### Libraries used:
 - `datetime` from the standard Python library for date and time manipulation.
