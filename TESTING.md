@@ -10,6 +10,22 @@ I used the [Code institutes Pep8 linter](https://pep8ci.herokuapp.com/) to ensur
 
 HTML and CSS Validation not done as this project was solely created using Python with code institute template.
 
+## Testing on different browsers
+
+The app works fine on Firefox, Edge and Google chrome. Please find the screenshots below
+
+#### Edge
+
+![Screenshot (31)](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/625bd63f-9972-486a-8c69-e54d88a48585)
+
+#### Firefox
+
+![Screenshot (30)](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/2016bc15-c4ba-477b-a4d3-0cce67e90bfd)
+
+#### Google Chrome
+
+![Screenshot 2024-03-15 9 53 35 PM](https://github.com/Pramilashanmugam/to-do-list/assets/150790058/9e221249-4700-494a-8139-70a47c8e05e7)
+
 ## Manual Testing
 
 ### The option to choose from given choices
